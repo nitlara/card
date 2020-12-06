@@ -29,6 +29,9 @@ function render(variables = {}) {
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
 
+  //  socialMediaPosition: "left", // social media bar position (left or right)
+  //    let socialMediaPosition = `<div class="socialMediaPosition"></div>`;
+
   //Not null
   if (null === variables.name) {
     variables.name = "Enter your name";
@@ -37,9 +40,13 @@ function render(variables = {}) {
     variables.lastname = "Enter your last name ";
   }
   if (null === variables.country) {
-    variables.country = "Enter your contry ";
+    variables.country = "Select your contry ";
   }
 
+  if (null === variables.socialMediaPosition) {
+    variables.socialMediaPosition = "position-left";
+  }
+  console.log(variables);
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
@@ -47,7 +54,7 @@ function render(variables = {}) {
           <h1>${variables.name}</h1>
           <h2>${variables.lastname}</h2>
           <h3>${variables.country}</h3>
-          <ul class="position-right">
+          <ul class="${variables.socialMediaPosition}">
             <li><a href="https://twitter.com/${variables.twitter}"><i class="fa fa-twitter"></i></a></li>
             <li><a href="https://github.com/${variables.github}"><i class="fa fa-github"></i></a></li>
             <li><a href="https://linkedin.com/${variables.linkedin}"><i class="fa fa-linkedin"></i></a></li>
