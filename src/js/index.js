@@ -35,6 +35,10 @@ function render(variables = {}) {
   if (null === variables.lastname) {
     variables.lastname = " and your lastname";
   }
+
+  if (null === variables.role) {
+    variables.role = "Your role";
+  }
   if (null === variables.country) {
     variables.country = "Select your contry";
   }
@@ -51,7 +55,7 @@ function render(variables = {}) {
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>${variables.name}${variables.lastname}</h1>
+          <h1>${variables.name} ${variables.lastname}</h1>
           <h3>${variables.role}
           <h3>${variables.country}, ${variables.city}</h3>
           <ul class="${variables.socialMediaPosition}"> 
